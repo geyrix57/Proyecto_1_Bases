@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" minWidth="200.0" prefHeight="345.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ControlLog">
+   <children>
+      <AnchorPane layoutY="65.0" prefHeight="269.0" prefWidth="602.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <TableView fx:id="tablaId" layoutX="6.0" layoutY="9.0" maxWidth="1.7976931348623157E308" prefHeight="269.0" prefWidth="602.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="CGroupId" editable="false" prefWidth="176.0" text="Group" />
+                <TableColumn fx:id="CMembersId" editable="false" prefWidth="399.0" text="Members" />
+                  <TableColumn fx:id="CSizeId" editable="false" prefWidth="399.0" text="Size (MB)" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <SepiaTone />
+               </effect>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="63.0" prefWidth="602.0" AnchorPane.bottomAnchor="391.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="173.0" layoutY="20.0" prefHeight="25.0" prefWidth="602.0" text="                Monitor de Redo Logs On-Line" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="Comic Sans MS" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="refresh" alignment="BASELINE_RIGHT" contentDisplay="CENTER" layoutX="522.0" layoutY="13.0" mnemonicParsing="false" onAction="#onAddItem" prefHeight="39.0" prefWidth="80.0" text="Refresh" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font name="Comic Sans MS" size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="imagen" fitHeight="93.0" fitWidth="140.0" layoutX="14.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

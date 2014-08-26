@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="325.0" prefWidth="652.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.TablespaceControl">
+   <children>
+      <PieChart fx:id="tablespacepiechart" layoutX="313.0" prefHeight="321.0" prefWidth="339.0" title="TableSpaces" />
+      <TableView fx:id="tableTS" layoutX="3.0" prefHeight="321.0" prefWidth="323.0">
+        
+      </TableView>
+   </children>
+</AnchorPane>
