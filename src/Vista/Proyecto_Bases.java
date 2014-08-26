@@ -59,12 +59,13 @@ public class Proyecto_Bases extends Application {
         stage.initStyle(StageStyle.UTILITY);
         stage.setTitle("Oracle Data Base Monitor");
         stage.sizeToScene();
+        
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
                 Platform.exit();
                 DataBase.getInstance().close();
-                //System.exit(0);
+                System.exit(0);
             }
         });
         stage.show();

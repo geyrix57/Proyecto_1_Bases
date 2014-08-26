@@ -111,11 +111,7 @@ public class ControlLogin implements Initializable,ControlledScreen {
             this.ErrorDialog("El SID esta vacio");
         } else {
             db.setConnection(host, port1, sid, username, password);
-            myController.setScreen(Proyecto_Bases.screen2ID);
-                /*Parent root = FXMLLoader.load(Proyecto_Bases.class.getResource("vistaGrid.fxml"));
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();*/
+            if(db.isConnected()) myController.setScreen(Proyecto_Bases.screen2ID);
         }
 
     }

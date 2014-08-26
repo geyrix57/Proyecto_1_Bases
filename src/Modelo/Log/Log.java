@@ -7,9 +7,7 @@
 package Modelo.Log;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.beans.property.SimpleStringProperty;
 
 /**
  *
@@ -18,12 +16,13 @@ import javafx.scene.image.ImageView;
 public class Log {
     
     
-    public Log(int g,int m,int s,String st){
+    public Log(int g,int m,int s,String st,String a){
         group=new SimpleIntegerProperty(g);
         members=new SimpleIntegerProperty(m);
         size=new SimpleIntegerProperty(s);
         
-        status=st;
+        status=new SimpleStringProperty(st);
+        archived=new SimpleStringProperty(a);
         
     }
     
@@ -42,6 +41,14 @@ public class Log {
         return size.getValue();
     }
      
+    public String getStatus(){
+        return status.getValue();
+    }
+    
+    public String getArchived(){
+        return archived.getValue();
+    }
+     
      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////   Sets   /////////////////////////////////////////////////////////////////////////////////////////////////////
      
@@ -52,18 +59,29 @@ public class Log {
      
      public void setMember(Integer n){
          members.set(n);
-         members.notifyAll();
+         
      }
      
      public void setSize(Integer n){
          size.set(n);
-         size.notifyAll();
+         
      }
+     
+     public void setStatus(String n){
+         status.set(n);
+         
+     }
+     public void setArchived(String n){
+         archived.set(n);
+         
+     }
+     
     
     
     
     private SimpleIntegerProperty group; 
     private SimpleIntegerProperty members;
     private SimpleIntegerProperty size; 
-    private String status;
+    private SimpleStringProperty status;
+    private SimpleStringProperty archived;
 }
