@@ -12,7 +12,11 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ControlLogin">
-   <cursor>
+   
+    <stylesheets>
+        <URL value="@login.css" />
+    </stylesheets>
+    <cursor>
      
    </cursor>
    
@@ -38,14 +42,10 @@
       <Label layoutX="76.0" layoutY="298.0" text="Password:" />
       <TextField fx:id="Usernameinput" layoutX="154.0" layoutY="231.0" />
       <PasswordField fx:id="Passwordinput" layoutX="154.0" layoutY="293.0" />
-      <ImageView fitHeight="57.0" fitWidth="251.0" layoutX="162.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/Oracle.png" />
-         </image>
-      </ImageView>
       <Label layoutX="77.0" layoutY="350.0" prefHeight="15.0" prefWidth="34.0" text="SID:" />
       <TextField fx:id="SIDInput" layoutX="154.0" layoutY="345.0" />
       <CheckBox fx:id="SIDcheck" layoutX="352.0" layoutY="349.0" mnemonicParsing="false" onAction="#SIDCheckAction" text="Default SID" />
       <CheckBox fx:id="UsernameCheck" layoutX="355.0" layoutY="235.0" mnemonicParsing="false" onAction="#UsernameCheckAction" text="Default Username" />
+      <Label id="Titulo" layoutX="133.0" layoutY="14.0" prefHeight="47.0" prefWidth="354.0" text="Data Base Monitor" textAlignment="CENTER" />
    </children>
 </AnchorPane>

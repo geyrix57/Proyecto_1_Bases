@@ -1,0 +1,7 @@
+.table-row-cell:empty { -fx-background-color: white; }
+.table-row-cell:empty .table-cell { -fx-border-width: 0px; }
+.table-view:row-selection .table-row-cell:filled:hover {
+    -fx-background-color: #2A5058;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-text-fill: -fx-text-inner-color;
+}

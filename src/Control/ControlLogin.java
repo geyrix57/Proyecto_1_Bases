@@ -25,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import org.controlsfx.dialog.Dialogs;
 
 /**
  * FXML Controller class
@@ -67,13 +68,22 @@ public class ControlLogin implements Initializable,ControlledScreen {
         this.stage = stage;
     }*/
 
-    private void ErrorDialog(String msg) {
-//        Dialogs.create()
-//        .owner(stage)
-//        .title("Error Dialog")
-//        .masthead("Look, an Error Dialog")
-//        .message(msg)
-//        .showError();
+    private void ErrorDialog(String msg1,String msg2) {
+        Dialogs.create()
+        .owner(Proyecto_Bases.STAGE)
+        .title("Error Dialog")
+        .masthead(msg1)
+        .message(msg2)
+        .showError();
+    }
+    
+    private void ExceptionDialog(Exception e){
+        Dialogs.create()
+        .owner(Proyecto_Bases.STAGE)
+        .title("Exception Dialog")
+        .masthead("Exception")
+        .message(e.getMessage())
+        .showException(e);
     }
 
     @FXML
@@ -94,24 +104,33 @@ public class ControlLogin implements Initializable,ControlledScreen {
             port1 = Integer.parseInt(port);
         } catch (NumberFormatException e) {
 
-            this.ErrorDialog("El puerto no es un entero");
+            this.ErrorDialog("Port","El puerto no es un entero");
             return;
         }
 
         DataBase db = DataBase.getInstance();
         if ("".equals(host)) {
-            this.ErrorDialog("El hostname esta vacio");
+            this.ErrorDialog("Hostname","El hostname esta vacio");
         } else if ("".equals(port)) {
-            this.ErrorDialog("El Port esta vacio");
+            this.ErrorDialog("Port","El Port esta vacio");
         } else if ("".equals(username)) {
-            this.ErrorDialog("El Username esta vacio");
+            this.ErrorDialog("Username","El Username esta vacio");
         } else if ("".equals(password)) {
-            this.ErrorDialog("El Password esta vacio");
+            this.ErrorDialog("Password","El Password esta vacio");
         } else if ("".equals(sid)) {
-            this.ErrorDialog("El SID esta vacio");
+            this.ErrorDialog("SID","El SID esta vacio");
         } else {
-            db.setConnection(host, port1, sid, username, password);
-            if(db.isConnected()) myController.setScreen(Proyecto_Bases.screen2ID);
+            try{db.setConnection(host, port1, sid, username, password);
+                if(db.isConnected()) myController.setScreen(Proyecto_Bases.screen2ID);
+                else{
+                throw new SQLException();
+                }
+                    }
+            catch(SQLException ex){
+            this.ExceptionDialog(ex);
+            }
+            
+          
         }
 
     }
