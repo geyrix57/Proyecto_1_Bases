@@ -7,6 +7,9 @@ package Vista;
 
 import Control.ScreensController;
 import Modelo.BaseDatos.DataBase;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -64,7 +67,11 @@ public class Proyecto_Bases extends Application {
             @Override
             public void handle(WindowEvent t) {
                 Platform.exit();
-                DataBase.getInstance().close();
+                try {
+                    DataBase.getInstance().close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Proyecto_Bases.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 System.exit(0);
             }
         });

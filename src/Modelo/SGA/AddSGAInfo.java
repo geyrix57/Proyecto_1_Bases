@@ -13,6 +13,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.Timeline;
@@ -100,7 +101,9 @@ public class AddSGAInfo implements Runnable, Observer{
         try {
             SGAComponent sagc = getSGAInfo();
             if(sagc != null) dataQ.add(sagc);
-            Thread.sleep(1000);//executor.awaitTermination(1, TimeUnit.SECONDS); //hace una consulta cada 1 segundos
+            synchronized(executor){
+                executor.wait(timeout*1000);
+            }
             if(DataBase.getInstance().isConnected())executor.execute(this);
             else executor.shutdownNow();
         } catch (InterruptedException ex) {
@@ -108,10 +111,11 @@ public class AddSGAInfo implements Runnable, Observer{
         }
     }
     
-    private ExecutorService executor;
+    private final ExecutorService executor;
     private DataBase db;
     private ConcurrentLinkedQueue<SGAComponent> dataQ;
     private Timeline tl;
+    public static long timeout = 1;
     
     /*private void checkDatabase(){
         if(db.isConnected()){

@@ -26,6 +26,8 @@ import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -38,6 +40,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.util.Duration;
 
 /**
@@ -58,11 +61,13 @@ public class ControlSGA implements Initializable{
     private CategoryAxis xAxis_Pool = new CategoryAxis();
     @FXML
     private NumberAxis yAxis_Pool = new NumberAxis();
+    @FXML
+    private Slider slider;
     
     private final static DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private static final int MAX_DATA_POINTS = 10;
     
-    private ConcurrentLinkedQueue<SGAComponent> dataQ = new ConcurrentLinkedQueue();
+    private final ConcurrentLinkedQueue<SGAComponent> dataQ = new ConcurrentLinkedQueue();
     private ExecutorService executor;
     private AddSGAInfo addToQueue;
     
@@ -107,15 +112,30 @@ public class ControlSGA implements Initializable{
             Lpseries.getData().add(new AreaChart.Data(dateFormat.format(sgac.getHora()), sgac.getLargePool()));
             Jpseries.getData().add(new AreaChart.Data(dateFormat.format(sgac.getHora()), sgac.getJavaPool()));
             if (Spseries.getData().size() > MAX_DATA_POINTS) {
-                Spseries.getData().remove(0, Spseries.getData().size() - MAX_DATA_POINTS);
-                Lpseries.getData().remove(0, Lpseries.getData().size() - MAX_DATA_POINTS);
-                Jpseries.getData().remove(0, Jpseries.getData().size() - MAX_DATA_POINTS);
+                Spseries.getData().remove(0, 1/*Spseries.getData().size() - MAX_DATA_POINTS*/);
+                Lpseries.getData().remove(0, 1/*Lpseries.getData().size() - MAX_DATA_POINTS*/);
+                Jpseries.getData().remove(0, 1/*Jpseries.getData().size() - MAX_DATA_POINTS*/);
             } 
         }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        slider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> ov, Number old_val, Number new_val) {
+                System.out.println(new_val.longValue());
+                AddSGAInfo.timeout = new_val.longValue();
+                synchronized(executor){
+                    tl.stop();
+                    dataQ.clear();
+                    executor.notify();
+                    tl.play();
+                }
+            }
+        });
+        
         sgaFreeSpaceChart.setAnimated(false);
         freeSGASerie.setName("Libre");
         usedSgaSizeSirie.setName("En Uso");

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.canvas.*?>
 <?import javafx.embed.swing.*?>
 <?import javafx.geometry.*?>
@@ -13,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="591.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ControlSGA">
     <children>
-      <BarChart fx:id="sgaFreeSpaceChart" layoutX="88.0" layoutY="8.0" prefHeight="215.0" prefWidth="500.0" title="Memoria SGA">
+      <BarChart fx:id="sgaFreeSpaceChart" layoutX="142.0" layoutY="14.0" prefHeight="215.0" prefWidth="500.0" title="Memoria SGA">
         <yAxis>
           <CategoryAxis fx:id="yAxis" prefHeight="149.0" prefWidth="24.0" side="LEFT" />
         </yAxis>
@@ -21,7 +22,7 @@
           <NumberAxis label="Mb" side="BOTTOM" fx:id="xAxis" />
         </xAxis>
       </BarChart>
-      <LineChart fx:id="sgaPoolChart" layoutX="54.0" layoutY="235.0" prefHeight="310.0" prefWidth="579.0" title="SGA POOL" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="235.0">
+      <LineChart fx:id="sgaPoolChart" layoutX="69.0" layoutY="229.0" prefHeight="310.0" prefWidth="579.0" title="SGA POOL" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="229.0">
         <xAxis>
           <CategoryAxis label="Hora" side="BOTTOM" fx:id="xAxis_Pool" />
         </xAxis>
@@ -29,5 +30,7 @@
           <NumberAxis fx:id="yAxis_Pool" label="Mb" side="LEFT" />
         </yAxis>
       </LineChart>
+      <Slider fx:id="slider" blockIncrement="1.0" focusTraversable="false" layoutX="31.0" layoutY="41.0" majorTickUnit="5.0" max="60.0" min="1.0" minorTickCount="5" orientation="VERTICAL" prefHeight="480.0" prefWidth="26.0" showTickLabels="true" showTickMarks="true" snapToPixel="false" snapToTicks="true" value="1.0" />
+      <Label layoutX="11.0" layoutY="14.0" text="Actualizar Seg." />
     </children>
 </AnchorPane>

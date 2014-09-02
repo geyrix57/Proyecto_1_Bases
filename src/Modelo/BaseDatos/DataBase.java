@@ -33,17 +33,13 @@ public class DataBase extends Observable implements Observer{
         return INSTANCE;
     }
     
-    public boolean conectar(){
-        try {
+    public boolean conectar() throws SQLException{
             if(conectado == false){
                 con = DriverManager.getConnection(info.getUrl(),info.getUser(),info.getPassword());
                 conectado = true;
                 this.setChanged();
                 this.notifyObservers();
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return conectado;
     }
     
@@ -51,33 +47,25 @@ public class DataBase extends Observable implements Observer{
         return conectado;
     }
     
-    public void close(){
-        try {
+    public void close() throws SQLException{
             if(conectado = true && con != null){
                 conectado = false;
                 this.setChanged();
                 this.notifyObservers();
                 con.close();  
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     public Coneccion getConeccionInfo(){
         return info;
     }
     
-    public ResultSet ExecuteQuery(String sql){
+    public ResultSet ExecuteQuery(String sql) throws SQLException{
         ResultSet resp = null;
-        try {
             if(this.conectado == true){
                 Statement stm = con.createStatement();
                 resp = stm.executeQuery(sql);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-        }
         return resp;
     }
     
@@ -92,17 +80,22 @@ public class DataBase extends Observable implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        try {
             if(conectado == true){
-                con.close();
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 conectado = false;
                 this.setChanged();
                 this.notifyObservers();
             }
+        try {
             this.conectar();//al cambiar la informacion del servidor se desconecta
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
     }
     
     private static DataBase INSTANCE = null;
