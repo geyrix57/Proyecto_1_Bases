@@ -12,7 +12,6 @@ import Modelo.SGA.SGAComponent;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import java.util.ResourceBundle;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
@@ -32,6 +31,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Slider;
 import javafx.util.Duration;
 
 /**
