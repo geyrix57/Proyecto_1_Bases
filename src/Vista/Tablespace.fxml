@@ -15,8 +15,8 @@
     </stylesheets>
     
     <children>
-      <PieChart fx:id="tablespacepiechart" layoutX="257.0" prefHeight="441.0" prefWidth="395.0" title="TableSpaces" />
-      <TableView fx:id="tableTS" layoutX="-9.0" prefHeight="249.0" prefWidth="266.0">
+      <PieChart fx:id="tablespacepiechart" layoutX="253.0" prefHeight="362.0" prefWidth="399.0" title="TableSpaces" />
+      <TableView fx:id="tableTS" prefHeight="292.0" prefWidth="252.0">
         
       </TableView>
    </children>

@@ -53,15 +53,19 @@ public class TablespaceControl implements Initializable, Observer {
         
         DataBase.getInstance().addObserver(this);
         TableColumn name= new TableColumn("Name");
-        name.setCellValueFactory(new PropertyValueFactory<Tablespace,String>("tablespace_name"));
-        TableColumn total_bytes= new TableColumn("MB");
-        total_bytes.setCellValueFactory(new PropertyValueFactory<Tablespace,String>("total_bytes"));
+        name.setCellValueFactory(new PropertyValueFactory<>("tablespace_name"));
+        TableColumn total_bytes= new TableColumn("MB Tamaño");
+        total_bytes.setCellValueFactory(new PropertyValueFactory<>("total_bytes"));
+        TableColumn mbusados= new TableColumn("MB Usados");
+        mbusados.setCellValueFactory(new PropertyValueFactory<>("used_bytes"));
+        TableColumn mbfree= new TableColumn("MB Libres");
+        mbfree.setCellValueFactory(new PropertyValueFactory<>("free_bytes"));
         TableColumn online_status= new TableColumn("Status");
-        online_status.setCellValueFactory(new PropertyValueFactory<Tablespace,String>("online_status"));
-        TableColumn file_name= new TableColumn("Path");
-        file_name.setCellValueFactory(new PropertyValueFactory<Tablespace,String>("file_name"));
+        online_status.setCellValueFactory(new PropertyValueFactory<>("online_status"));
+        TableColumn file_name= new TableColumn("Fichero");
+        file_name.setCellValueFactory(new PropertyValueFactory<>("file_name"));
         this.tableTS.setItems(model.getDatostabla());
-        this.tableTS.getColumns().addAll(name,total_bytes,online_status,file_name);
+        this.tableTS.getColumns().addAll(name,total_bytes,mbusados,mbfree,online_status,file_name);
     }    
 
     @Override

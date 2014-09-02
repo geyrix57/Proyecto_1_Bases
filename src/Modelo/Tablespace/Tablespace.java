@@ -18,6 +18,8 @@ public class Tablespace {
     SimpleStringProperty total_bytes;
     SimpleStringProperty online_status;
     SimpleStringProperty file_name;
+    SimpleStringProperty used_bytes;
+    SimpleStringProperty free_bytes;
 
     public Tablespace(String tablespace_name, String total_bytes, String online_status, String file_name) {
         this.tablespace_name = new SimpleStringProperty(tablespace_name);
@@ -25,6 +27,17 @@ public class Tablespace {
         this.online_status = new SimpleStringProperty(online_status);
         this.file_name = new SimpleStringProperty(file_name);
     }
+
+    public Tablespace(String tablespace_name, String total_bytes, String online_status, String file_name, String used_bytes, String free_bytes) {
+        this.tablespace_name = new SimpleStringProperty(tablespace_name);
+        this.total_bytes = new SimpleStringProperty(total_bytes);
+        this.online_status = new SimpleStringProperty(online_status);
+        this.file_name = new SimpleStringProperty(file_name);
+        this.used_bytes = new SimpleStringProperty(used_bytes);
+        this.free_bytes = new SimpleStringProperty(free_bytes);
+    }
+    
+    
 
     public String getTablespace_name() {
         return tablespace_name.get();
@@ -56,6 +69,22 @@ public class Tablespace {
 
     public void setFile_name(String file_name) {
         this.file_name.set(file_name);
+    }
+
+    public String getUsed_bytes() {
+        return used_bytes.get();
+    }
+
+    public void setUsed_bytes(String used_bytes) {
+        this.used_bytes.set(used_bytes);
+    }
+
+    public String getFree_bytes() {
+        return free_bytes.get();
+    }
+
+    public void setFree_bytes(String free_bytes) {
+        this.free_bytes.get();
     }
     
   
