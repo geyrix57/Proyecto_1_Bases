@@ -8,7 +8,6 @@ package Modelo.Tablespace;
 import Modelo.BaseDatos.DataBase;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
@@ -35,8 +34,8 @@ public class TablespaceModel {
         //database.setConnection("localhost", 1521, "XE", "sys as sysdba", "root");
         this.pieChartData = FXCollections.observableArrayList();
         datostabla = FXCollections.observableArrayList();
-        this.consulTS = "SELECT tablespace_name, ROUND(bytes/1024000) FROM dba_data_files";
-        this.consulTS1 = "SELECT tablespace_name, ROUND(bytes/1024000), online_status,file_name FROM dba_data_files";
+        this.consulTS = "SELECT tablespace_name, ROUND(MAX(bytes)/1024/1024,2) \"Tamano\" FROM dba_data_files GROUP BY tablespace_name";
+        this.consulTS1 = "SELECT tablespace_name, ROUND(MAX(bytes)/1024/1024,2), online_status,file_name FROM dba_data_files";
         this.consulTS2 = "Select t.tablespace_name \"Tablespace\", t.status \"Estado\",\n"
                 + "ROUND(MAX(d.bytes)/1024/1024,2) \"MB Tamaño\",\n"
                 + "ROUND((MAX(d.bytes)/1024/1024) -\n"
@@ -86,7 +85,7 @@ public class TablespaceModel {
         this.pieChartData.clear();
         while (result.next()) {
             String tsname = result.getString("tablespace_name");
-            int mb = result.getInt("ROUND(bytes/1024000)");
+            int mb = result.getInt("Tamano");
             this.pieChartData.add(new PieChart.Data(tsname, mb));
         }
         result.getStatement().close();

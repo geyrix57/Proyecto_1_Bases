@@ -15,11 +15,11 @@
     </stylesheets>
     
     <children>
-      <PieChart fx:id="tablespacepiechart" layoutY="1.0" prefHeight="176.0" prefWidth="692.0" title="TableSpaces" />
-      <TableView fx:id="tableTS" layoutX="493.0" layoutY="184.0" prefHeight="332.0" prefWidth="199.0">
+      <PieChart fx:id="tablespacepiechart" layoutX="460.0" layoutY="1.0" prefHeight="512.0" prefWidth="303.0" title="TableSpaces" />
+      <TableView fx:id="tableTS" prefHeight="162.0" prefWidth="461.0">
         
       </TableView>
-      <StackedBarChart fx:id="tablespacebarchart" layoutX="-1.0" layoutY="175.0" prefHeight="345.0" prefWidth="494.0" title="Tablespaces MB">
+      <StackedBarChart fx:id="tablespacebarchart" layoutY="162.0" prefHeight="356.0" prefWidth="461.0" title="Tablespaces MB">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
