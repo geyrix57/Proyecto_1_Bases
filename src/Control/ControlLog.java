@@ -7,7 +7,6 @@ package Control;
 
 import Modelo.BaseDatos.DataBase;
 import Modelo.Log.Log;
-import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;

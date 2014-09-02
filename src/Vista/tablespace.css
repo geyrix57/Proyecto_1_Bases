@@ -4,18 +4,15 @@
     -fx-background-color: #2A5058;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-text-fill: -fx-text-inner-color;
+    -fx-font-color: white;
 }
 //----------------------------------Char Bar
-.default-color0.chart-bar { -fx-bar-fill: #FF3300}
-.default-color1.chart-bar { -fx-bar-fill: #E68A00 }
+.default-color0.chart-bar { -fx-bar-fill: #ffd700}
+.default-color1.chart-bar { -fx-bar-fill: #ffa500 }
 
 
 //------------------------------------- Chart Pie
-/*.default-color0.chart-pie { -fx-pie-color: #ffd700; }
-.default-color1.chart-pie { -fx-pie-color: #ffa500; }
-.default-color2.chart-pie { -fx-pie-color: #860061; }
-.default-color3.chart-pie { -fx-pie-color: #adff2f; }
-.default-color4.chart-pie { -fx-pie-color: #ff5700; }
+/*
  
 .chart-pie-label-line {
     -fx-stroke: #8b4513;
@@ -48,6 +45,11 @@
    -fx-background-radius: 4,4,3;
    -fx-padding: 6px;
 }*/
+.default-color0.chart-pie { -fx-pie-color: #ffd700; }
+.default-color1.chart-pie { -fx-pie-color: #ffa500; }
+.default-color2.chart-pie { -fx-pie-color: #860061; }
+.default-color3.chart-pie { -fx-pie-color: #adff2f; }
+.default-color4.chart-pie { -fx-pie-color: #ff5700; }
 .chart-pie {
     -fx-pie-color: CHART_COLOR_1;
     -fx-background-color: radial-gradient(radius 100%, derive(-fx-pie-color,20%), derive(-fx-pie-color,-10%));
@@ -55,25 +57,18 @@
     -fx-border-color: -fx-background;
 }
 .chart-pie-label {
-    -fx-padding: 3px;
+    -fx-padding: 7px;
 }
 .chart-pie-label-line {
     -fx-stroke: derive(-fx-background,-20%);
 }
-.default-color0.chart-pie { -fx-pie-color: CHART_COLOR_1; }
-.default-color1.chart-pie { -fx-pie-color: CHART_COLOR_2; }
-.default-color2.chart-pie { -fx-pie-color: CHART_COLOR_3; }
-.default-color3.chart-pie { -fx-pie-color: CHART_COLOR_4; }
-.default-color4.chart-pie { -fx-pie-color: CHART_COLOR_5; }
-.default-color5.chart-pie { -fx-pie-color: CHART_COLOR_6; }
-.default-color6.chart-pie { -fx-pie-color: CHART_COLOR_7; }
-.default-color7.chart-pie { -fx-pie-color: CHART_COLOR_8; }
+
 .negative.chart-pie {
     -fx-pie-color: transparent;
     -fx-background-color: white;
 }
 .pie-legend-symbol.chart-pie {
     -fx-background-radius: 8px;
-    -fx-padding: 8px;
+    -fx-padding: 12px;
     -fx-border-color: null;
 }
