@@ -5,3 +5,5 @@
     -fx-background-insets: 0, 0 0 1 0;
     -fx-text-fill: -fx-text-inner-color;
 }
+.default-color0.chart-bar { -fx-bar-fill: red }
+.default-color1.chart-bar { -fx-bar-fill: green }

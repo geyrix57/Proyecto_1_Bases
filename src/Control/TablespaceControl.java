@@ -11,16 +11,15 @@ import Modelo.Tablespace.Tablespace;
 import Modelo.Tablespace.TablespaceModel;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Observer;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.InvalidationListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -42,6 +41,8 @@ public class TablespaceControl implements Initializable, Observer {
     @FXML
     TableView tableTS;
     
+    @FXML
+    StackedBarChart tablespacebarchart; 
    
     
     @Override
@@ -82,6 +83,18 @@ public class TablespaceControl implements Initializable, Observer {
             Logger.getLogger(TablespaceControl.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.tablespacepiechart.setData(model.getPieChartData());
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Total");
+       // XYChart.Series series2 = new XYChart.Series();
+       //series2.setName("Usado");
+        XYChart.Series series3 = new XYChart.Series();
+        series3.setName("Libre");
+        for(Tablespace tsd:model.getDatostabla()){
+        series1.getData().add(new XYChart.Data(tsd.getTablespace_name(), Integer.parseInt(tsd.getTotal_bytes())));    
+        //series2.getData().add(new XYChart.Data(tsd.getTablespace_name(), Integer.parseInt(tsd.getUsed_bytes())));
+        series3.getData().add(new XYChart.Data(tsd.getTablespace_name(), Integer.parseInt(tsd.getFree_bytes())));
+        }
+       this.tablespacebarchart.getData().addAll(series1,series3);
     }
     
 }
